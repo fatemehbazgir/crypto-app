@@ -1,14 +1,16 @@
 import { RotatingLines } from "react-loader-spinner";
+
+import styles from "./TableCoin.module.css";
 import TableRow from "./TableRow";
 
 // Show the coins in the table
 function TableCoin({ coins, isLoading }) {
   return (
-    <div>
+    <div className={styles.container}>
       {isLoading ? (
         <RotatingLines strokeColor="#3874ff" strokeWidth="2" />
       ) : (
-        <table>
+        <table className={styles.table}>
           <thead>
             <tr>
               <th>Coin</th>
