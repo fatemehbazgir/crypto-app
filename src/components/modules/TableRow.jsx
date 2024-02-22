@@ -4,7 +4,11 @@ import chartDown from "../../assets/chart-down.svg";
 import chartUp from "../../assets/chart-up.svg";
 
 // Extract table data
-function TableRow({ coin, currency }) {
+function TableRow({ coin, currency, setChart }) {
+  const showHandler = () => {
+    setChart(true);
+  };
+
   const {
     image,
     name,
@@ -16,7 +20,7 @@ function TableRow({ coin, currency }) {
   return (
     <tr>
       <td>
-        <div className={styles.symbol}>
+        <div className={styles.symbol} onClick={showHandler}>
           <img src={image} alt={name} />
           <span>{symbol.toUpperCase()}</span>
         </div>
