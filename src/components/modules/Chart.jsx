@@ -22,18 +22,24 @@ function Chart({ chart, setChart }) {
   };
 
   return (
+    // Create a modal
     <div className={styles.container}>
       <span className={styles.cross} onClick={() => setChart(null)}>
         X
       </span>
+
+      {/* Show chart */}
       <div className={styles.chart}>
         <div className={styles.name}>
           <img src={chart.coin.image} alt="" />
           <p>{chart.coin.name}</p>
         </div>
+
         <div className={styles.graph}>
           <ChartComponent data={convertData(chart, type)} type={type} />
         </div>
+
+        {/* Show chart data */}
         <div className={styles.types} onClick={typeHandler}>
           <button className={type === "prices" ? styles.selected : null}>
             Prices
