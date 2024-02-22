@@ -6,17 +6,6 @@ import { marketChart } from "../../services/cryptoApi";
 
 // Extract table data
 function TableRow({ coin, currency, setChart }) {
-  const showHandler = async () => {
-    try {
-      const res = await fetch(marketChart(id));
-      const json = await res.json();
-      console.log(json)
-      setChart(json);
-    } catch (error) {
-      setChart(null);
-    }
-  };
-
   const {
     id,
     image,
@@ -26,6 +15,16 @@ function TableRow({ coin, currency, setChart }) {
     price_change_percentage_24h: price_change,
     total_volume,
   } = coin;
+
+  const showHandler = async () => {
+    try {
+      const res = await fetch(marketChart(id));
+      const json = await res.json();
+      setChart({ ...json, coin});
+    } catch (error) {
+      setChart(null);
+    }
+  };
   return (
     <tr>
       <td>
