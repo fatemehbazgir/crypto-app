@@ -4,7 +4,7 @@ import chartDown from "../../assets/chart-down.svg";
 import chartUp from "../../assets/chart-up.svg";
 
 // Extract table data
-function TableRow({ coin }) {
+function TableRow({ coin, currency }) {
   const {
     image,
     name,
@@ -22,7 +22,23 @@ function TableRow({ coin }) {
         </div>
       </td>
       <td>{name}</td>
-      <td>${current_price.toLocaleString()}</td>
+      <td>
+        {" "}
+        {currency === "usd"
+          ? "$"
+          : currency === "eur"
+          ? "€"
+          : currency === "jpy"
+          ? "¥"
+          : currency === "gbp"
+          ? "£"
+          : currency === "aud"
+          ? "A$"
+          : currency === "chf"
+          ? "Fr"
+          : "元"}
+        {current_price.toLocaleString()}
+      </td>
       <td className={price_change > 0 ? styles.success : styles.error}>
         {price_change.toFixed(2)}%
       </td>
