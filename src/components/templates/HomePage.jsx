@@ -20,6 +20,7 @@ function HomePage() {
       try {
         const res = await fetch(getCoinList(page, currency));
         const json = await res.json();
+     console.log(json);
         setCoins(json);
         setIsLoading(false);
       } catch (error) {
